@@ -149,9 +149,8 @@ class CodedBufferReader {
     return _lastTag;
   }
 
-  static int _decodeZigZag32(int value) {
-    if ((value & 0x1) == 1) value = -value;
-    return value >> 1;
+  static int _decodeZigZag32(int instance){
+    return ((instance & 1) == 1 ? -(instance >> 1) - 1 : (instance >> 1));
   }
 
   static Int64 _decodeZigZag64(Int64 value) {
